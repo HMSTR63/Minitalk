@@ -46,3 +46,15 @@ To use the Minitalk application, follow these steps:
 
 5. **Server Output:**
    The server will receive the message and display it in the terminal.
+
+## Resources
+
+### Mandatory Part
+- [UNIX Signals](https://man7.org/linux/man-pages/man7/signal.7.html): Comprehensive documentation on UNIX signals.
+- [Signal Handling in C](https://www.gnu.org/software/libc/manual/html_node/Signal-Handling.html): Guide on how to handle signals in C.
+
+### Bonus Part
+- [Unicode in C](https://www.cl.cam.ac.uk/~mgk25/unicode.html): Information on handling Unicode characters in C.
+- [Efficient Signal Handling](https://www.ibm.com/docs/en/zos/2.3.0?topic=functions-sigaction-examine-change-signal-action): Techniques for efficient signal handling.
+- [Timeout Mechanisms](https://www.gnu.org/software/libc/manual/html_node/Setting-an-Alarm.html): Implementing timeout mechanisms using alarms.
+- [Acknowledgment Protocols](https://en.wikipedia.org/wiki/Acknowledgement_(data_networks)): Understanding acknowledgment protocols in data communication.
