@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmstrx <hmstrx@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sojammal <sojammal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 23:22:17 by sojammal          #+#    #+#             */
-/*   Updated: 2025/01/10 16:27:18 by hmstrx           ###   ########.fr       */
+/*   Updated: 2025/01/22 16:30:16 by sojammal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	ft_send_signal(int pid, char h)
 			signal = SIGUSR2;
 		if (kill(pid, signal) == -1)
 		{
-			ft_putstr_fd(RED "Invalid PID. Signal failed.\n" "\e[0m", 2);
+			ft_putstr_fd(RED "Invalid PID. Signal failed.\n", 2);
 			exit(1);
 		}
-		usleep(100);
+		usleep(600);
 		bit++;
 	}
 }
@@ -44,7 +44,7 @@ int	validate_pid(char *pid_str)
 	{
 		if (!ft_isdigit(pid_str[i]))
 		{
-			ft_putstr_fd(RED "PID has non-digit chars.\n" "\e[0m", 2);
+			ft_putstr_fd(RED "PID has non-digit chars.\n", 2);
 			return (0);
 		}
 		i++;
@@ -52,7 +52,7 @@ int	validate_pid(char *pid_str)
 	pid = ft_atoi(pid_str);
 	if (pid <= 0)
 	{
-		ft_putstr_fd(RED "PID must be positive.\n" "\e[0m", 2);
+		ft_putstr_fd(RED "PID must be positive.\n", 2);
 		return (0);
 	}
 	return (pid);
@@ -69,7 +69,7 @@ int	main(int ac, char **av)
 		pid = validate_pid(av[1]);
 		if (pid != 0)
 		{
-			ft_putstr_fd(GRN "Valid PID. Sending...\n" "\e[0m", 1);
+			ft_putstr_fd(GRN "Valid PID. Sending...\n", 1);
 			while (av[2][i])
 			{
 				ft_send_signal(pid, av[2][i]);
@@ -80,7 +80,7 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		ft_putstr_fd(RED "Invalid args or empty msg.\n" "\e[0m", 2);
-		ft_putstr_fd(PUR "Usage: ./client [PID] [MSG]\n" "\e[0m", 2);
+		ft_putstr_fd(RED "Invalid args or empty msg.\n", 2);
+		ft_putstr_fd(PUR "Usage: ./client [PID] [MSG]\n", 2);
 	}
 }
