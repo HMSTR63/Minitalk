@@ -6,7 +6,7 @@
 /*   By: sojammal <sojammal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 00:51:07 by sojammal          #+#    #+#             */
-/*   Updated: 2025/01/22 14:29:29 by sojammal         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:33:08 by sojammal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	ft_btoa(int sig, siginfo_t *info, void *context)
 		buffer[buffer_index++] = h;
 		h = 0;
 		p_bit = 0;
-		print_buffer_and_ack(buffer, &buffer_index, pid);
+		if (buffer_index == 4 || buffer[buffer_index - 1] == '\0')
+			print_buffer_and_ack(buffer, &buffer_index, pid);
 	}
 }
 
@@ -67,9 +68,9 @@ int	main(void)
 	int					pid;
 
 	pid = getpid();
-	ft_putstr_fd(CY "Server PID: ", 1);
+	ft_putstr_fd(CY "Server PID: " "\e[0m", 1);
 	ft_putnbr_fd(pid, 1);
-	ft_putstr_fd("\n" GRN "Waiting...\n", 1);
+	ft_putstr_fd("\n" GRN "Waiting...\n" "\e[0m", 1);
 	sig.sa_sigaction = ft_btoa;
 	sig.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &sig, NULL);

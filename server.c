@@ -6,7 +6,7 @@
 /*   By: sojammal <sojammal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 23:27:33 by sojammal          #+#    #+#             */
-/*   Updated: 2025/01/22 14:30:03 by sojammal         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:43:09 by sojammal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	main(void)
 	int					pid;
 
 	pid = getpid();
-	ft_putstr_fd(CY "Server PID:", 1);
+	ft_putstr_fd(CY "Server PID: \e[0m", 1);
 	ft_putnbr_fd(pid, 1);
-	ft_putstr_fd("\n" GRN "Waiting...\n", 1);
+	ft_putstr_fd("\n" GRN "Waiting...\n" "\e[0m", 1);
 	sig.sa_sigaction = ft_btoa;
 	sig.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &sig, NULL);
